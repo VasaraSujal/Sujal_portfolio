@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-blur {
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #00ffff, #0066ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3),
+              0 0 20px rgba(0, 255, 255, 0.2),
+              0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4),
+              0 0 30px rgba(0, 255, 255, 0.3),
+              0 0 45px rgba(0, 255, 255, 0.2);
+}
