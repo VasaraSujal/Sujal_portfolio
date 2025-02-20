@@ -27,7 +27,7 @@ const Projects = () => {
       tech: ["HTML", "CSS", "JavaScript", "YouTube API", "Fetch API"],
       github: "https://github.com/yourusername/task-manager",
       live: "https://task-demo.com",
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+      image: "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/588/507/datas/original.PNG"
     },
     {
       title: "Figma Projects",
