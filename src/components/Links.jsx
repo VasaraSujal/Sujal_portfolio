@@ -33,7 +33,7 @@ const Links = () => {
     {
       icon: <Globe className="w-6 h-6" />,
       name: 'Portfolio',
-      url: 'https://yourportfolio.com',
+      url: 'https://portofolio-by-sujal.netlify.app/',
       color: 'hover:text-[#00ff00]'
     },
     {
