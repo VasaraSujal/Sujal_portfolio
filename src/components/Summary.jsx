@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code2, Brain, Rocket } from 'lucide-react';
+import { Tilt } from 'react-tilt';
 
 const Summary = () => {
   const [ref, inView] = useInView({
@@ -57,21 +58,23 @@ const Summary = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {highlights.map((item, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              variants={cardVariants}
-              className="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-white/10 
-                       hover:neon-border transition-all duration-300 flex flex-col items-center"
-            >
-              <div className="mb-4 p-3 rounded-full bg-gray-800/50">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-              <p className="text-gray-300 text-center">{item.description}</p>
-            </motion.div>
+            <Tilt key={i} options={{ max: 15, scale: 1.05 }}>
+              <motion.div
+                custom={i}
+                initial="hidden"
+                animate={inView ? "visible" : "hidden"}
+                variants={cardVariants}
+                className="bg-white/5 backdrop-blur-lg p-6 rounded-xl border border-white/10 
+                         hover:neon-border transition-all duration-300 flex flex-col items-center
+                         transform-gpu hover:-translate-y-1"
+              >
+                <div className="mb-4 p-3 rounded-full bg-gray-800/50">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-300 text-center">{item.description}</p>
+              </motion.div>
+            </Tilt>
           ))}
         </div>
       </div>
