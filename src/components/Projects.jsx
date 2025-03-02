@@ -29,7 +29,8 @@ const Projects = () => {
       github: "https://github.com/VasaraSujal/king_hub",
       live: "https://kinghub-by-sujal.netlify.app/",
       image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      category: "mern"
+      category: "mern",
+      video: "https://drive.google.com/file/d/1rlTl1L93fwTUP3o9n5FdQs_f2wZqlcjG/preview" // Replace YOUR_GOOGLE_DRIVE_FILE_ID with your actual file ID
     },
     {
       title: "Portfolio Website",
@@ -41,12 +42,12 @@ const Projects = () => {
       category: "react"
     },
     {
-      title: "Spotify Homepage", 
+      title: "Spotify Homepage",
       description: "A Spotify homepage clone in React recreates the streaming platform's landing page with a modern UI, featuring navigation, playlists, and responsive design, showcasing React components and state management.",
       tech: ["React"],
       github: "https://github.com/VasaraSujal/SPOTIFY_TASK1",
       live: "https://portofolio-by-sujal.netlify.app/",
-      image: "https://res.cloudinary.com/dkombksnu/image/upload/v1740289534/y9wuwy5toglqsnnc8zso.png",
+      image: "https://res.cloudinary.com/dkombksnu/image/upload/v1740938530/w0lgprhoxfwjrwd0k8nr.jpg",
       category: "react"
     },
     {
@@ -55,7 +56,7 @@ const Projects = () => {
       tech: ["React"],
       github: "https://github.com/VasaraSujal/Sujal_portfolio",
       live: "https://portofolio-by-sujal.netlify.app/",
-      image: "https://res.cloudinary.com/dkombksnu/image/upload/v1740289534/y9wuwy5toglqsnnc8zso.png",
+      image: "https://res.cloudinary.com/dkombksnu/image/upload/v1740938531/dp9ctqqszgkdhvkhb4uu.jpg",
       category: "react"
     },
     {
@@ -159,8 +160,8 @@ const Projects = () => {
     }
   ];
 
-  const filteredProjects = activeCategory === 'all' 
-    ? projects 
+  const filteredProjects = activeCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === activeCategory);
 
   const containerVariants = {
@@ -199,8 +200,8 @@ const Projects = () => {
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300
-                ${activeCategory === category.id 
-                  ? 'bg-cyan-400 text-gray-900 shadow-lg shadow-cyan-400/20' 
+                ${activeCategory === category.id
+                  ? 'bg-cyan-400 text-gray-900 shadow-lg shadow-cyan-400/20'
                   : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'}`}
             >
               {category.icon}
@@ -230,6 +231,7 @@ const Projects = () => {
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
                 </div>
+
                 <div className="p-6 flex flex-col h-[calc(100%-12rem)]">
                   <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                   <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
@@ -244,6 +246,17 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
+                    {project.video && (
+                  <div className="relative h-48 overflow-hidden mt-4">
+                    <iframe
+                      src={project.video}
+                      className="w-full h-full"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                )}
                     <div className="flex justify-between items-center pt-4 border-t border-gray-700/50">
                       <a
                         href={project.github}
