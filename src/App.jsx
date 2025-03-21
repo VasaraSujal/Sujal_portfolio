@@ -1,13 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { Tilt } from 'react-tilt';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import {
-  Sun, Moon, Terminal, Code, BookOpen, Briefcase, Rocket, Heart,
-} from 'lucide-react';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from "./components/About"; 
 import Summary from './components/Summary';
@@ -23,7 +17,6 @@ import Links from './components/Links';
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(true);
   const sectionsRef = useRef([]);
   
   useEffect(() => {
@@ -47,19 +40,12 @@ const App = () => {
 
   return (
     <div className='min-h-screen bg-gray-900 text-white'>
-      <nav className="fixed top-0 w-full bg-white/5 backdrop-blur-lg border-b border-white/10 z-10">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between h-16 items-center">
-          <div className="flex items-center">
-            <Terminal className="w-6 h-6 text-cyan-400" />
-            <span className="ml-2 font-semibold opa">Sujal Vasara</span>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
       <main className="relative pt-16">
-        <section ref={(el) => (sectionsRef.current[0] = el)}>
+        <section ref={(el) => (sectionsRef.current[0] = el)} id="hero">
           <Hero />
         </section>
-        <section ref={(el) => (sectionsRef.current[1] = el)}>
+        <section ref={(el) => (sectionsRef.current[1] = el)} id="about">
           <About />
         </section>
         <section ref={(el) => (sectionsRef.current[2] = el)}>
@@ -68,19 +54,19 @@ const App = () => {
         <section ref={(el) => (sectionsRef.current[3] = el)}>
           <PersonalInfo />
         </section>
-        <section ref={(el) => (sectionsRef.current[4] = el)}>
+        <section ref={(el) => (sectionsRef.current[4] = el)} id="education">
           <Education />
         </section>
-        <section ref={(el) => (sectionsRef.current[5] = el)}>
+        <section ref={(el) => (sectionsRef.current[5] = el)} id="skills">
           <Skills />
         </section>
-        <section ref={(el) => (sectionsRef.current[6] = el)}>
+        <section ref={(el) => (sectionsRef.current[6] = el)} id="projects">
           <Projects />
         </section>
         <section ref={(el) => (sectionsRef.current[7] = el)}>
           <References />
         </section>
-        <section ref={(el) => (sectionsRef.current[8] = el)}>
+        <section ref={(el) => (sectionsRef.current[8] = el)} id="contact">
           <Contact />
         </section>
         <section ref={(el) => (sectionsRef.current[9] = el)}>
