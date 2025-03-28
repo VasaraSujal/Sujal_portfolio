@@ -14,18 +14,37 @@ import {
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
-  );
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Close menu when resizing to desktop or clicking outside
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('.mobile-menu-container')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
@@ -33,7 +52,7 @@ function Navbar() {
     { id: "about", label: "About", icon: User },
     { id: "education", label: "Education", icon: GraduationCap },
     { id: "skills", label: "Skills", icon: Code },
-    { id: "certifications", label: "Certificate", icon: BadgeCheck },
+    { id: "certifications", label: "Certificates", icon: BadgeCheck },
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -47,10 +66,10 @@ function Navbar() {
         smooth={true}
         offset={-80}
         duration={500}
-        className="flex items-center px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all cursor-pointer"
+        className="flex items-center px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all cursor-pointer active:bg-gray-600"
         onClick={() => setIsMenuOpen(false)}
       >
-        <Icon className="w-5 h-5 md:w-6 md:h-6 mr-2" />
+        <Icon className="w-5 h-5 md:w-6 md:h-6 mr-3" />
         <span className="text-sm md:text-base">{item.label}</span>
       </ScrollLink>
     );
@@ -97,14 +116,16 @@ function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } md:hidden bg-gray-800/95 backdrop-blur-sm shadow-xl`}
+        className={`mobile-menu-container fixed inset-0 top-16 bg-gray-900/95 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        } md:hidden`}
       >
-        <div className="px-2 pt-2 pb-4 space-y-1">
-          {navItems.map((item) => (
-            <NavLink key={item.id} item={item} />
-          ))}
+        <div className="h-full overflow-y-auto pb-6">
+          <div className="px-4 pt-2 space-y-1">
+            {navItems.map((item) => (
+              <NavLink key={item.id} item={item} />
+            ))}
+          </div>
         </div>
       </div>
     </nav>
