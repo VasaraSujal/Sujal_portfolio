@@ -7,6 +7,7 @@ import About from "./components/About";
 import Summary from './components/Summary';
 import PersonalInfo from './components/PersonalInfo';
 import Education from './components/Education';
+import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import References from './components/References';
@@ -60,16 +61,19 @@ const App = () => {
         <section ref={(el) => (sectionsRef.current[5] = el)} id="skills">
           <Skills />
         </section>
-        <section ref={(el) => (sectionsRef.current[6] = el)} id="projects">
+        <section ref={(el) => (sectionsRef.current[6] = el)} id="certifications">
+          <Certifications />
+        </section>
+        <section ref={(el) => (sectionsRef.current[7] = el)} id="projects">
           <Projects />
         </section>
-        <section ref={(el) => (sectionsRef.current[7] = el)}>
+        <section ref={(el) => (sectionsRef.current[8] = el)}>
           <References />
         </section>
-        <section ref={(el) => (sectionsRef.current[8] = el)} id="contact">
+        <section ref={(el) => (sectionsRef.current[9] = el)} id="contact">
           <Contact />
         </section>
-        <section ref={(el) => (sectionsRef.current[9] = el)}>
+        <section ref={(el) => (sectionsRef.current[10] = el)}>
           <Links />
         </section>
       </main>

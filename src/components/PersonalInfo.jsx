@@ -13,8 +13,7 @@ const PersonalInfo = () => {
   const personalDetails = [
     { icon: <User />, label: "Name", value: "Vasara Sujal" },
     { icon: <Mail />, label: "Email", value: "vasarasujal.cg@gmail.com" },
-    { icon: <MapPin />, label: "Location", value: "Ahmedabad, Gujarat, India" },
-    { icon: <Phone />, label: "Phone", value: "+91 6354937917" }
+    { icon: <MapPin />, label: "Location", value: "Ahmedabad, Gujarat, India" }
   ];
 
   return (

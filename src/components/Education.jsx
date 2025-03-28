@@ -13,7 +13,7 @@ const Education = () => {
   const education = [
     {
       degree: "Bachelor of Computer Science",
-      institution: "Rai University",
+      institution: "CodingGita x Rai University",
       duration: "2024 - 2028",
       description: "Pursuing a Bachelor of Computer Science, currently in the first year at Rai University (Ahmedabad). Learning foundational subjects like programming, data structures, and algorithms. Developing problem-solving and analytical skills through coursework and projects. Gaining a basic understanding of computer systems and software development. Building a strong foundation for future specialization in Artificial Intelligence and Machine Learning.",
       achievements: [
@@ -43,7 +43,7 @@ const Education = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-3xl font-bold text-cyan-400 text-center mb-12"
         >
-          Education & Certifications
+          Education
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">

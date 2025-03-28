@@ -30,11 +30,6 @@ const Contact = () => {
       value: "vasarasujal.cg@gmail.com",
     },
     {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+91 6354937917",
-    },
-    {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
       value: "Ahmedabad, Gujarat, India"
