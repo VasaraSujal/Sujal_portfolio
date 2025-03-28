@@ -1,147 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { Link as ScrollLink } from "react-scroll";
-// import {
-//   Menu,
-//   X,
-//   Home,
-//   User,
-//   Code,
-//   GraduationCap,
-//   Briefcase,
-//   Mail,
-//   Moon,
-//   Sun,
-// } from "lucide-react";
-
-// function Navbar() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [isDarkMode, setIsDarkMode] = useState(
-//     localStorage.getItem("darkMode") === "true" // Retrieve saved preference
-//   );
-//   const [isScrolled, setIsScrolled] = useState(false);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setIsScrolled(window.scrollY > 20);
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   // Apply dark/light mode dynamically
-//   useEffect(() => {
-//     if (isDarkMode) {
-//       document.documentElement.classList.add("dark");
-//     } else {
-//       document.documentElement.classList.remove("dark");
-//     }
-//     // Save preference to localStorage
-//     localStorage.setItem("darkMode", isDarkMode);
-//   }, [isDarkMode]);
-
-//   const navItems = [
-//     { id: "hero", label: "Home", icon: Home },
-//     { id: "about", label: "About", icon: User },
-//     { id: "education", label: "Education", icon: GraduationCap },
-//     { id: "certifications", label: "Certificate", icon: GraduationCap },
-//     { id: "skills", label: "Skills", icon: Code },
-//     { id: "projects", label: "Projects", icon: Briefcase },
-//     { id: "contact", label: "Contact", icon: Mail },
-//   ];
-
-//   const NavLink = ({ item }) => {
-//     const Icon = item.icon;
-//     return (
-//       <ScrollLink
-//         to={item.id}
-//         spy={true}
-//         smooth={true}
-//         offset={-80}
-//         duration={500}
-//         className="flex items-center px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all cursor-pointer"
-//         onClick={() => setIsMenuOpen(false)}
-//       >
-//         <Icon className="w-5 h-5 mr-2" />
-//         <span>{item.label}</span>
-//       </ScrollLink>
-//     );
-//   };
-
-//   return (
-//     <nav
-//       className={`fixed w-full z-50 transition-all duration-300 ${
-//         isScrolled ? "bg-gray-900/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
-//       }`}
-//     >
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex items-center justify-between h-16">
-//           {/* Logo */}
-//           <div className="flex-shrink-0 font-bold text-xl text-cyan-400">
-//             Portfolio
-//           </div>
-
-//           {/* Desktop Navigation */}
-//           <div className="hidden md:flex md:items-center md:space-x-4">
-//             {navItems.map((item) => (
-//               <NavLink key={item.id} item={item} />
-//             ))}
-//             <button
-//             onClick={() => setIsDarkMode(!isDarkMode)}
-//             className="p-2 text-black dark:text-white rounded-lg transition-colors"
-//           >
-//             {isDarkMode ? (
-//               <Sun className="w-5 h-5" />
-//             ) : (
-//               <Moon className="w-5 h-5" />
-//             )}
-//           </button>
-//           </div>
-
-//           {/* Mobile menu button */}
-//           <div className="md:hidden">
-//             <button
-//               onClick={() => setIsMenuOpen(!isMenuOpen)}
-//               className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-//             >
-//               {isMenuOpen ? (
-//                 <X className="w-6 h-6" />
-//               ) : (
-//                 <Menu className="w-6 h-6" />
-//               )}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile Navigation */}
-//       {isMenuOpen && (
-//         <div className="md:hidden bg-gray-800 shadow-lg">
-//           <div className="px-2 pt-2 pb-3 space-y-1">
-//             {navItems.map((item) => (
-//               <NavLink key={item.id} item={item} />
-//             ))}
-//             <button
-//             onClick={() => setIsDarkMode(!isDarkMode)}
-//             className="p-2 text-black dark:text-white rounded-lg transition-colors"
-//           >
-//             {isDarkMode ? (
-//               <Sun className="w-5 h-5" />
-//             ) : (
-//               <Moon className="w-5 h-5" />
-//             )}
-//           </button>
-//           </div>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// }
-
-// export default Navbar;
-
-
-
 import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import {
@@ -159,7 +15,7 @@ import {
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true" // Retrieve saved preference
+    localStorage.getItem("darkMode") === "true"
   );
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -177,7 +33,7 @@ function Navbar() {
     { id: "about", label: "About", icon: User },
     { id: "education", label: "Education", icon: GraduationCap },
     { id: "skills", label: "Skills", icon: Code },
-    { id: "certifications", label: "Certificate", icon: BadgeCheck},
+    { id: "certifications", label: "Certificate", icon: BadgeCheck },
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -191,11 +47,11 @@ function Navbar() {
         smooth={true}
         offset={-80}
         duration={500}
-        className="flex items-center px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all cursor-pointer"
+        className="flex items-center px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all cursor-pointer"
         onClick={() => setIsMenuOpen(false)}
       >
-        <Icon className="w-5 h-5 mr-2" />
-        <span>{item.label}</span>
+        <Icon className="w-5 h-5 md:w-6 md:h-6 mr-2" />
+        <span className="text-sm md:text-base">{item.label}</span>
       </ScrollLink>
     );
   };
@@ -211,22 +67,23 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 font-bold text-xl text-cyan-400 dark:text-cyan-300">
+          <div className="flex-shrink-0 font-bold text-lg sm:text-xl text-cyan-400 dark:text-cyan-300">
             Portfolio
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-4">
+          <div className="hidden md:flex md:items-center md:space-x-1 lg:space-x-2">
             {navItems.map((item) => (
               <NavLink key={item.id} item={item} />
             ))}
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -239,15 +96,17 @@ function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 shadow-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
-              <NavLink key={item.id} item={item} />
-            ))}
-          </div>
+      <div
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } md:hidden bg-gray-800/95 backdrop-blur-sm shadow-xl`}
+      >
+        <div className="px-2 pt-2 pb-4 space-y-1">
+          {navItems.map((item) => (
+            <NavLink key={item.id} item={item} />
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
