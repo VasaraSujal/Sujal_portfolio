@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
@@ -15,8 +15,8 @@ const Hero = () => {
         y: (e.clientY / window.innerHeight - 0.5) * 20,
       });
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const containerVariants = {
@@ -32,8 +32,15 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 120, damping: 15 },
+      transition: { type: "spring", stiffness: 120, damping: 15 },
     },
+  };
+
+  const scrollToAboutMe = () => {
+    const aboutMeSection = document.getElementById("about"); // Locate the "About Me" section
+    if (aboutMeSection) {
+      aboutMeSection.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
+    }
   };
 
   return (
@@ -42,9 +49,11 @@ const Hero = () => {
       <motion.div
         className="absolute inset-0"
         animate={{
-          background: `radial-gradient(circle at ${mousePosition.x + 50}% ${mousePosition.y + 50}%, rgba(255,255,255,0.1), transparent 50%)`,
+          background: `radial-gradient(circle at ${mousePosition.x + 50}% ${
+            mousePosition.y + 50
+          }%, rgba(255,255,255,0.1), transparent 50%)`,
         }}
-        transition={{ type: 'tween', ease: 'linear', duration: 0.1 }}
+        transition={{ type: "tween", ease: "linear", duration: 0.1 }}
       />
 
       {/* Dynamic Particles */}
@@ -58,8 +67,8 @@ const Hero = () => {
               height: `${Math.random() * 4 + 2}px`,
             }}
             initial={{
-              x: Math.random() * 100 + '%',
-              y: Math.random() * 100 + '%',
+              x: Math.random() * 100 + "%",
+              y: Math.random() * 100 + "%",
             }}
             animate={{
               y: [-100, window.innerHeight + 100],
@@ -69,7 +78,7 @@ const Hero = () => {
             transition={{
               duration: Math.random() * 15 + 10,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
         ))}
@@ -90,7 +99,7 @@ const Hero = () => {
             x: mousePosition.x * 0.5,
             y: mousePosition.y * 0.5,
           }}
-          transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+          transition={{ type: "spring", stiffness: 50, damping: 20 }}
         >
           Hey, I'm Vasara Sujal
         </motion.h1>
@@ -107,13 +116,13 @@ const Hero = () => {
           />
           <TypeAnimation
             sequence={[
-              'Frontend Developer Extraordinaire',
+              "Frontend Developer Extraordinaire",
               2000,
-              'Interactive UI Specialist',
+              "Interactive UI Specialist",
               2000,
-              'React Animation Master',
+              "React Animation Master",
               2000,
-              'Creative Code Architect',
+              "Creative Code Architect",
               2000,
             ]}
             wrapper="span"
@@ -131,25 +140,38 @@ const Hero = () => {
         </motion.p>
 
         {/* Interactive Buttons with Effects */}
-        <motion.div variants={itemVariants} className="flex justify-center gap-6">
+        <motion.div
+          variants={itemVariants}
+          className="flex justify-center gap-6"
+        >
           <ScrollLink to="projects" smooth={true} offset={-80} duration={500}>
             <motion.button
               className="relative bg-white text-[#185a9d] font-semibold py-3 px-8 rounded-full shadow-xl overflow-hidden"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onHoverStart={() => controls.start({ x: 0 })}
-              onHoverEnd={() => controls.start({ x: '-100%' })}
+              onHoverEnd={() => controls.start({ x: "-100%" })}
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                 animate={controls}
-                initial={{ x: '-100%' }}
+                initial={{ x: "-100%" }}
                 transition={{ duration: 0.5 }}
               />
               <span className="relative flex items-center gap-2">
                 Explore Work
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </span>
             </motion.button>
@@ -158,10 +180,10 @@ const Hero = () => {
           <ScrollLink to="contact" smooth={true} offset={-80} duration={500}>
             <motion.button
               className="relative border-2 border-white text-white font-semibold py-3 px-8 rounded-full"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.1,
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                boxShadow: '0 0 20px rgba(255,255,255,0.3)',
+                backgroundColor: "rgba(255,255,255,0.15)",
+                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
               }}
               whileTap={{ scale: 0.95 }}
             >
@@ -181,12 +203,25 @@ const Hero = () => {
           animate={{ y: [0, 15, 0], opacity: [1, 0.5, 1] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
+          {/* Arrow container */}
           <motion.div
-            className="w-12 h-12 border-2 border-white rounded-full flex items-center justify-center"
+            className="w-12 h-12 border-2 border-white rounded-full flex items-center justify-center cursor-pointer"
             whileHover={{ scale: 1.2, rotate: 180 }}
+            onClick={scrollToAboutMe}
           >
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            {/* Arrow SVG */}
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
             </svg>
           </motion.div>
         </motion.div>
